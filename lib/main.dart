@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_lite/pages/add_to_do.dart';
 import 'package:to_do_lite/pages/home_page.dart';
 import 'package:to_do_lite/pages/to_do_page.dart';
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
-      home: ToDoPage(),
+      // home: ToDoPage(),
+      home: AddToDoPage(),
     );
   }
 }
