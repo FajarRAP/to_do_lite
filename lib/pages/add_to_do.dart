@@ -6,7 +6,17 @@ class AddToDoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarAinx(),
+      appBar: appBarAinx(
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
+          color: Colors.blue,
+        ),
+      ),
       body: ListView(
         children: [
           Image.asset("images/addtodo.png"),
@@ -62,7 +72,9 @@ class AddToDoPage extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
                   child: Container(
                     width: 100,
                     height: 50,

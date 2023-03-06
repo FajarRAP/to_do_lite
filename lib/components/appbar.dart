@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar appBarAinx() {
+AppBar appBarAinx(Widget x) {
   return AppBar(
     title: const Text(
       "Aplikasi To Do",
@@ -11,5 +11,6 @@ AppBar appBarAinx() {
     centerTitle: true,
     backgroundColor: Colors.white,
     elevation: 0,
+    leading: x,
   );
 }

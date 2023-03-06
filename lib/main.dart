@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_lite/pages/add_to_do.dart';
 import 'package:to_do_lite/pages/home_page.dart';
-import 'package:to_do_lite/pages/to_do_page.dart';
+import 'package:to_do_lite/routes/generated_routes.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -13,9 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: HomePage(),
-      // home: ToDoPage(),
-      home: AddToDoPage(),
+      home: HomePage(),
+      onGenerateRoute: GeneratedRoutes.generatedRoutes,
     );
   }
 }

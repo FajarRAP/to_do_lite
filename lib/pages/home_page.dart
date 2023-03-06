@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_lite/components/appbar.dart';
+import 'package:to_do_lite/routes/constant_routes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarAinx(),
+      appBar: appBarAinx(Container()),
       body: Column(
         children: [
           Image.asset(
@@ -29,7 +30,9 @@ class HomePage extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(todopage);
+            },
             child: Container(
               width: 100,
               height: 50,

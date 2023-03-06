@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_lite/components/appbar.dart';
+import 'package:to_do_lite/routes/constant_routes.dart';
 
 class ToDoPage extends StatelessWidget {
   const ToDoPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarAinx(),
+      appBar: appBarAinx(
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
+          color: Colors.blue,
+        ),
+      ),
       body: Column(
         children: [
           Padding(
@@ -68,7 +79,9 @@ class ToDoPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(addtodopage);
+        },
         child: const Icon(
           Icons.add,
           size: 35,
