@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_lite/components/appbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Aplikasi To Do",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: appBarAinx(),
       body: Column(
         children: [
           Image.asset(
