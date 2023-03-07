@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_lite/pages/home_page.dart';
+import 'package:to_do_lite/provider/to_do_model_provider.dart';
 import 'package:to_do_lite/routes/generated_routes.dart';
 
 void main(List<String> args) {
@@ -10,10 +12,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      onGenerateRoute: GeneratedRoutes.generatedRoutes,
+    return ChangeNotifierProvider(
+      create: (context) => ToDoModelProvider(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+        onGenerateRoute: GeneratedRoutes.generatedRoutes,
+      ),
     );
   }
 }

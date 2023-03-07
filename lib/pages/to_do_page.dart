@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_lite/components/appbar.dart';
 import 'package:to_do_lite/models/to_do_model.dart';
+import 'package:to_do_lite/provider/to_do_model_provider.dart';
 import 'package:to_do_lite/routes/constant_routes.dart';
 
 class ToDoPage extends StatefulWidget {
@@ -10,12 +12,10 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
-  List<ToDoModel> x = [
-    ToDoModel(tugas: "Tugas 1", tanggal: "1-1-2023"),
-    ToDoModel(tugas: "Tugas 2", tanggal: "2-1-2023"),
-  ];
   @override
   Widget build(BuildContext context) {
+    final toDoProvider = Provider.of<ToDoModelProvider>(context);
+    final getToDo = toDoProvider.list;
     return Scaffold(
       appBar: appBarAinx(
         IconButton(
@@ -29,7 +29,7 @@ class _ToDoPageState extends State<ToDoPage> {
         ),
       ),
       body: Column(
-        children: x.map((e) => ListToDoPage(toDoModel: e)).toList(),
+        children: getToDo.map((e) => ListToDoPage(toDoModel: e)).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -70,7 +70,7 @@ class _ListToDoPageState extends State<ListToDoPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
       child: Container(
         width: double.infinity,
         height: 80,
