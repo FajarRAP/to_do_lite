@@ -5,6 +5,8 @@ class AddToDoPage extends StatelessWidget {
   const AddToDoPage({super.key});
   @override
   Widget build(BuildContext context) {
+    String x;
+    String y;
     return Scaffold(
       appBar: appBarAinx(
         IconButton(
@@ -36,7 +38,9 @@ class AddToDoPage extends StatelessWidget {
                 suffixIcon: const Icon(Icons.assignment_add),
               ),
               autofocus: false,
-              onChanged: (value) {},
+              onChanged: (value) {
+                x = value;
+              },
             ),
           ),
           Padding(
@@ -51,7 +55,9 @@ class AddToDoPage extends StatelessWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2002),
                       lastDate: DateTime(2024),
-                    ).then((value) {});
+                    ).then((value) {
+                      y = value.toString();
+                    });
                   },
                   child: Container(
                     width: 120,

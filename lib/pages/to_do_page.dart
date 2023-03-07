@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_lite/components/appbar.dart';
+import 'package:to_do_lite/models/to_do_model.dart';
 import 'package:to_do_lite/routes/constant_routes.dart';
 
-class ToDoPage extends StatelessWidget {
+class ToDoPage extends StatefulWidget {
   const ToDoPage({super.key});
+  @override
+  State<ToDoPage> createState() => _ToDoPageState();
+}
+
+class _ToDoPageState extends State<ToDoPage> {
+  List<ToDoModel> x = [
+    ToDoModel(tugas: "Tugas 1", tanggal: "1-1-2023"),
+    ToDoModel(tugas: "Tugas 2", tanggal: "2-1-2023"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,64 +29,7 @@ class ToDoPage extends StatelessWidget {
         ),
       ),
       body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              width: double.infinity,
-              height: 80,
-              decoration: BoxDecoration(
-                color: Colors.blue[200],
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 2,
-                    offset: Offset(5, 5),
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {},
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "To Do 1",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "6-3-2023",
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Expanded(
-                    child: SizedBox(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Icon(
-                      Icons.star_border,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+        children: x.map((e) => ListToDoPage(toDoModel: e)).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -85,6 +38,98 @@ class ToDoPage extends StatelessWidget {
         child: const Icon(
           Icons.add,
           size: 35,
+        ),
+      ),
+    );
+  }
+}
+
+class ListToDoPage extends StatefulWidget {
+  final ToDoModel toDoModel;
+  const ListToDoPage({super.key, required this.toDoModel});
+
+  @override
+  State<ListToDoPage> createState() => _ListToDoPageState();
+}
+
+class _ListToDoPageState extends State<ListToDoPage> {
+  bool isCheck = false;
+
+  bool isStar = false;
+
+  Icon iconBintangIsi = const Icon(
+    Icons.star,
+    size: 30,
+  );
+
+  Icon iconBintangKosong = const Icon(
+    Icons.star_border,
+    size: 30,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Container(
+        width: double.infinity,
+        height: 80,
+        decoration: BoxDecoration(
+          color: Colors.blue[200],
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 2,
+              offset: Offset(5, 5),
+              color: Colors.grey,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Checkbox(
+              value: isCheck,
+              onChanged: (value) {
+                setState(() {
+                  isCheck = !isCheck;
+                });
+              },
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.toDoModel.tugas,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  widget.toDoModel.tanggal,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+            const Expanded(
+              child: SizedBox(),
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  isStar = !isStar;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: (isStar) ? iconBintangIsi : iconBintangKosong,
+              ),
+            ),
+          ],
         ),
       ),
     );
