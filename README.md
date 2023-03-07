@@ -1,6 +1,6 @@
-# to_do_lite
+# Aplikasi To Do Sederhana
 
-A new Flutter project.
+Project kecil dari bootcamp
 
 ## Getting Started
 
