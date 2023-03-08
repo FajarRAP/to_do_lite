@@ -28,7 +28,7 @@ class _ToDoPageState extends State<ToDoPage> {
           color: Colors.blue,
         ),
       ),
-      body: Column(
+      body: ListView(
         children: getToDo.map((e) => ListToDoPage(toDoModel: e)).toList(),
       ),
       floatingActionButton: FloatingActionButton(

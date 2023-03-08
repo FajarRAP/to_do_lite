@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       create: (context) => ToDoModelProvider(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
         onGenerateRoute: GeneratedRoutes.generatedRoutes,
+        home: HomePage(),
       ),
     );
   }
